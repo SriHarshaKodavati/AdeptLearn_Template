@@ -23,11 +23,10 @@ class AdaptiveELearningModel:
         ])
     
     def train_models(self):
-        # For demonstration, we'll use random data
-        X_users = np.random.rand(1000, 5)  # [time_taken, score, avg_time_per_question, difficulty, attempts]
+        X_users = np.random.rand(1000, 5) 
         y_users = np.random.choice(['basic', 'intermediate', 'advanced'], 1000)
         
-        X_modules = np.random.rand(1000, 6)  # [user_level, module_difficulty, prev_performance, time_spent, quiz_score, engagement]
+        X_modules = np.random.rand(1000, 6)  
         y_modules = np.random.choice([0, 1], 1000)
         
         self.user_classifier.fit(X_users, y_users)
@@ -53,24 +52,21 @@ def classify_user():
         data['attempts']
     ]
     
-    # Direct classification based on score
     if data['score'] == 100:
         classification = 'advanced'
         can_skip = True
     else:
         classification = model.classify_user(user_features)
         
-        # Map classification to user_level
         user_level = {'basic': 1, 'intermediate': 2, 'advanced': 3}[classification]
         
-        # Predict if user can skip the module
         module_features = [
             user_level,
-            3,  # Assuming medium module difficulty
-            data['score'],  # Using quiz score as previous performance
+            3,  
+            data['score'], 
             data['time_taken'],
             data['score'],
-            0.8  # Assuming high engagement
+            0.8 
         ]
         can_skip = model.can_skip_module(module_features)
     
@@ -89,17 +85,15 @@ def classify_user():
     ]
     classification = model.classify_user(user_features)
     
-    # Map classification to user_level
     user_level = {'basic': 1, 'intermediate': 2, 'advanced': 3}[classification]
     
-    # Predict if user can skip the module
     module_features = [
         user_level,
-        3,  # Assuming medium module difficulty
-        data['score'],  # Using quiz score as previous performance
+        3,  
+        data['score'],  
         data['time_taken'],
         data['score'],
-        0.8  # Assuming high engagement
+        0.8  
     ]
     can_skip = model.can_skip_module(module_features)
     

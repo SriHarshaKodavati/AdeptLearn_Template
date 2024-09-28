@@ -10,14 +10,7 @@ const questions = [
   { id: 5, question: "What is 15 + 6?", answer: 21 },
 ];
 
-//http://localhost:5000/classify_user
-courses -> module -> id - > take quiz -> id database json format api end point , submit 
--> website 
--> course selcet 
--> take quiz -> json format question 
--> course id , take quiz -> id -question db
 
--> javascript 
 
 function App() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -61,8 +54,8 @@ function App() {
       time_taken: elapsedTime,
       score: score,
       avg_time_per_question: elapsedTime / questions.length,
-      difficulty: 3, // Assuming medium difficulty
-      attempts: 1 // Assuming first attempt
+      difficulty: 3, 
+      attempts: 1 
     };
 
     try {
